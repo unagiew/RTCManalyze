@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<SplitPane dividerPositions="0.35" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="jp.ntrip.client.MainController">
+    <AnchorPane maxHeight="200.0" minHeight="200.0" minWidth="0.0">
+        <MenuBar layoutY="1.0" prefHeight="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <Menu mnemonicParsing="false" text="File">
+                <MenuItem mnemonicParsing="false" onAction="#onActionMenuSetting" text="Setting"/>
+                <MenuItem mnemonicParsing="false" onAction="#onActionMenuClose" text="Close"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <MenuItem mnemonicParsing="false" text="Delete"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <MenuItem mnemonicParsing="false" onAction="#onActionMenuAbout" text="About"/>
+            </Menu>
+        </MenuBar>
+        <Label layoutX="23.0" layoutY="40.0" text="Host"/>
+        <Label layoutX="21.0" layoutY="77.0" text="Mount Point"/>
+        <ComboBox fx:id="ComboBox_Host" editable="true" layoutX="98.0" layoutY="35.0" prefHeight="26.0"
+                  prefWidth="308.0"/>
+        <ComboBox fx:id="ComboBox_MountPoint" editable="true" layoutX="98.0" layoutY="72.0" prefHeight="26.0"
+                  prefWidth="308.0"/>
+        <CheckBox fx:id="CheckBox_NMEA" layoutX="21.0" layoutY="126.0" mnemonicParsing="false" text="NMEA"/>
+        <Label layoutX="88.0" layoutY="126.0" text="Latitude"/>
+        <Label layoutX="88.0" layoutY="167.0" text="Longitude"/>
+        <TextField fx:id="TextField_Latitude" layoutX="150.0" layoutY="121.0" prefHeight="26.0" prefWidth="178.0"
+                   promptText="decimal"/>
+        <TextField fx:id="TextField_Longitude" layoutX="150.0" layoutY="163.0" prefHeight="26.0" prefWidth="178.0"
+                   promptText="decimal"/>
+        <CheckBox fx:id="CheckBox_UserPass" layoutX="358.0" layoutY="126.0" mnemonicParsing="false"
+                  text="User/Pass"/>
+        <Label layoutX="448.0" layoutY="126.0" text="User ID"/>
+        <Label layoutX="448.0" layoutY="162.0" text="Password"/>
+        <TextField fx:id="TextField_User" layoutX="510.0" layoutY="122.0" promptText="ID"/>
+        <PasswordField fx:id="PasswordField_Password" layoutX="510.0" layoutY="158.0" promptText="password"/>
+        <Button fx:id="Button_Start" defaultButton="true" layoutX="467.0" layoutY="72.0" mnemonicParsing="false"
+                onAction="#onStartButtonClicked" prefHeight="26.0" prefWidth="83.0" text="Start"/>
+        <Button fx:id="Button_Stop" layoutX="574.0" layoutY="72.0" mnemonicParsing="false"
+                onAction="#onStopButtonClicked" prefHeight="26.0" prefWidth="83.0" text="Stop"/>
+        <Label fx:id="Label_Error" layoutX="416.0" layoutY="39.0" prefHeight="18.0" prefWidth="268.0"
+               textFill="RED">
+            <font>
+                <Font name="System Bold Italic" size="14.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <TabPane minHeight="0.0" minWidth="0.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="NTRIP Data">
+            <ScrollPane fx:id="ScrollPane_Vbox" fitToHeight="true" fitToWidth="true" vbarPolicy="ALWAYS">
+                <VBox fx:id="VBox_Info">
+                    <TableView fx:id="TableView_Info" maxHeight="150" minHeight="150.0"
+                               prefHeight="150.0">
+                        <columns>
+                            <TableColumn fx:id="TableColumn_Item" minWidth="100.0"
+                                         prefWidth="100.0" text="item"/>
+                            <TableColumn fx:id="TableColumn_Value" minWidth="300.0"
+                                         prefWidth="500.0" text="value"/>
+                            <TableColumn fx:id="TableColumn_Times" minWidth="50.0"
+                                         prefWidth="50.0" text="times"/>
+                        </columns>
+                    </TableView>
+                    <FlowPane fx:id="FlowPane_Chart" rowValignment="TOP"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+        <Tab text="NTRIP Analyzed">
+            <ScrollPane fx:id="ScrollPane_Analyzed" hbarPolicy="NEVER" prefHeight="250.0" vbarPolicy="ALWAYS"
+                        vvalue="1.0">
+                <TextFlow fx:id="TextFlow_Analyzed" prefHeight="250.0"/>
+            </ScrollPane>
+        </Tab>
+        <Tab text="HEX Stream">
+            <ScrollPane fx:id="ScrollPane_Stream" hbarPolicy="NEVER" prefHeight="250.0" prefWidth="700.0"
+                        vbarPolicy="ALWAYS" vvalue="1.0">
+                <TextFlow fx:id="TextFlow_Stream" prefHeight="250.0"/>
+            </ScrollPane>
+        </Tab>
+    </TabPane>
+</SplitPane>

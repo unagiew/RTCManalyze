@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="187.0"
+            prefWidth="373.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="jp.ntrip.client.AboutController">
+    <Button fx:id="Button_Close" layoutX="304.0" layoutY="139.0" mnemonicParsing="false"
+            onAction="#onCloseButtonClicked" text="Close"/>
+</AnchorPane>
