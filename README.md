@@ -1,4 +1,4 @@
-# RTCM analyzer
+# RTCM3 analyzer
 This program is a prototype analyzer to understand RTCM3 protocol.
 
 ![sample](https://user-images.githubusercontent.com/50898890/71879335-35afca80-3171-11ea-800b-269508ea6bc1.jpg)
